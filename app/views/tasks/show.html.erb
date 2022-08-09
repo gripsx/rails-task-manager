@@ -2,12 +2,17 @@
 <div class="task-details border rounded p-3 alert-secondary">
 <p class="details"><%= @task.details %></p>
 </div>
-<div class="task-completed">
-<p><%= @task.completed %></p>
+<div class="form-check p-4">
+ <% if @task.completed == true %>
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+  <label class="form-check-label" for="flexCheckDefault">
+  <%= "This task is completed" %>
+  <% else %>
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+  <%= "This task is not completed yet" %>
+  <% end %>
+  </label>
 </div>
 <%= link_to "Back Home", tasks_path %>
 <%= link_to "Edit this task", edit_task_path %>
-<%= link_to "Delete",
-  task_path(@task),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
